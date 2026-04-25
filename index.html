@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부산대학교 사회복지학과 - 사람임이 자랑스러운 세상</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FFD600;
+            --primary-light: #FFF9C4;
+            --soft-bg: #FFFFFF;
+            --text-main: #2D3436;
+            --text-sub: #636E72;
+        }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: var(--soft-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            word-break: keep-all;
+        }
+
+        .font-gaegu { font-family: 'Gaegu', cursive; }
+
+        /* 반짝이 애니메이션 */
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 0.8; transform: scale(1.1) rotate(45deg); }
+        }
+        .sparkle-decoration {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FFD600'%3E%3Cpath d='M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5z'/%3E%3C/svg%3E") no-repeat center;
+            pointer-events: none;
+            animation: sparkle 3s infinite;
+        }
+
+        /* 깔끔한 카드 디자인 */
+        .clean-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        /* 활성화된 네비게이션 버튼 스타일 */
+        .nav-btn {
+            position: relative;
+            padding: 0.6rem 1.2rem;
+            font-weight: 600;
+            color: var(--text-sub);
+            transition: all 0.3s;
+            border-radius: 12px;
+        }
+        .nav-btn:hover {
+            color: var(--text-main);
+            background: var(--primary-light);
+        }
+        .nav-btn.active {
+            color: var(--text-main);
+            background: var(--primary);
+            box-shadow: 0 4px 12px rgba(255, 214, 0, 0.3);
+        }
+
+        /* 섹션 전환 애니메이션 */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 마우스 파티클 */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            background: var(--primary);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            z-index: 9999;
+            opacity: 0.8;
+        }
+
+        .section-tag {
+            background-color: var(--primary-light);
+            color: #856404;
+            padding: 4px 16px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        .curriculum-item {
+            border-left: 3px solid var(--primary);
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mouse Particles Script -->
+    <script>
+        // 공통 파티클 생성 함수
+        function createParticle(x, y, isClick = false) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const size = isClick ? Math.random() * 15 + 10 : Math.random() * 12 + 5;
+            p.style.width = `${size}px`;
+            p.style.height = `${size}px`;
+            p.style.left = `${x}px`;
+            p.style.top = `${y}px`;
+            document.body.appendChild(p);
+
+            const angle = Math.random() * Math.PI * 2;
+            const dist = isClick ? Math.random() * 150 + 50 : Math.random() * 50 + 20;
+            const duration = isClick ? Math.random() * 600 + 400 : 800;
+            
+            p.animate([
+                { transform: 'translate(-50%, -50%) scale(1) rotate(0deg)', opacity: 1 },
+                { transform: `translate(calc(-50% + ${Math.cos(angle)*dist}px), calc(-50% + ${Math.sin(angle)*dist}px)) scale(0) rotate(${isClick ? 360 : 180}deg)`, opacity: 0 }
+            ], { duration: duration, easing: 'ease-out' }).onfinish = () => p.remove();
+        }
+
+        // 마우스 이동 시 파티클
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.85) {
+                createParticle(e.clientX, e.clientY);
+            }
+        });
+
+        // 클릭 시 팡팡 터지는 효과 추가
+        document.addEventListener('mousedown', (e) => {
+            for (let i = 0; i < 12; i++) {
+                createParticle(e.clientX, e.clientY, true);
+            }
+        });
+
+        // Tab Switching Logic
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+            
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex flex-col items-center gap-4">
+                <h1 class="text-xl font-bold font-gaegu flex items-center gap-2">
+                    <span class="text-2xl text-yellow-500">✨</span> PNU 사회복지학과
+                </h1>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <button onclick="showTab('intro')" class="nav-btn active">학과소개</button>
+                    <button onclick="showTab('learn')" class="nav-btn">배우는것</button>
+                    <button onclick="showTab('curri')" class="nav-btn">커리큘럼</button>
+                    <button onclick="showTab('method')" class="nav-btn">학습방식</button>
+                    <button onclick="showTab('practice')" class="nav-btn">현장실습</button>
+                    <button onclick="showTab('career')" class="nav-btn">졸업진로</button>
+                    <button onclick="showTab('activity')" class="nav-btn">학과활동</button>
+                    <button onclick="showTab('recommend')" class="nav-btn">추천대상</button>
+                    <button onclick="showTab('cert')" class="nav-btn">자격증</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-6 py-12 min-h-[70vh]">
+        
+        <!-- 1. 학과 소개 -->
+        <section id="intro" class="tab-content active relative text-center">
+            <div class="sparkle-decoration" style="top:-20px; left:10%;"></div>
+            <div class="sparkle-decoration" style="bottom:0; right:5%; animation-delay: 1s;"></div>
+            
+            <span class="section-tag mb-4 inline-block">DEPARTMENT INTRO</span>
+            <h2 class="text-4xl md:text-5xl font-bold mb-10 leading-tight">
+                사람임이 한없이 자랑스러운<br>
+                <span class="text-yellow-500">세상을 만드는 것</span>
+            </h2>
+            <div class="clean-card bg-yellow-50/30 text-lg leading-relaxed">
+                <p class="mb-6 font-semibold text-yellow-700 italic font-gaegu text-2xl">“푸른 바다가 고래를 위하여 푸르다는 걸 모르는 사람은 아직 사랑을 모르지”</p>
+                <p class="text-gray-600">
+                    세상에는 자신의 바다가 스스로를 위해 존재한다는 것을 모르는 이들이 많습니다.<br>
+                    우리는 딱딱한 껍질 속에 스스로의 벽을 쌓고 있는 사람들이 그 벽을 깨고 나와<br>
+                    싱싱한 고래임을 깨닫게 돕기 위해 오늘도 이 길을 걷고 있습니다.
+                </p>
+            </div>
+        </section>
+
+        <!-- 2. 배우는 내용 -->
+        <section id="learn" class="tab-content">
+            <div class="text-center mb-12">
+                <span class="section-tag mb-4 inline-block">LEARNING</span>
+                <h3 class="text-3xl font-bold font-gaegu">무엇을 배우나요?</h3>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold">인간과 사회를<br>통합적으로 바라봅니다</h3>
+                    <p class="text-gray-500">개인의 심리적 특성부터 가족, 지역사회, 국가 제도까지 인간을 둘러싼 모든 환경을 분석합니다.</p>
+                </div>
+                <div class="grid gap-4">
+                    <div class="p-5 border-l-4 border-yellow-400 bg-gray-50 rounded-r-xl">
+                        <h4 class="font-bold">실천적 개입 방법</h4>
+                        <p class="text-sm text-gray-500">상담 기술과 사례관리 능력을 습득하여 삶의 실질적 변화를 이끌어냅니다.</p>
+                    </div>
+                    <div class="p-5 border-l-4 border-yellow-400 bg-gray-50 rounded-r-xl">
+                        <h4 class="font-bold">사회 구조 분석</h4>
+                        <p class="text-sm text-gray-500">사회 정책과 제도의 형성과정을 이해하고 개선 방안을 모색합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 커리큘럼 -->
+        <section id="curri" class="tab-content">
+            <div class="text-center mb-12">
+                <span class="section-tag mb-4 inline-block">CURRICULUM</span>
+                <h3 class="text-3xl font-bold font-gaegu">탄탄한 성장을 지원하는 교과과정</h3>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-8">
+                    <div class="curriculum-item">
+                        <span class="text-sm font-bold text-yellow-600">1학년 기초</span>
+                        <p class="text-gray-700 mt-1">사회복지학개론, 인간행동과 사회환경, 사회복지조사론, 사회복지역사</p>
+                    </div>
+                    <div class="curriculum-item">
+                        <span class="text-sm font-bold text-yellow-600">2학년 심화</span>
+                        <p class="text-gray-700 mt-1">사회복지실천론, 지역사회복지론</p>
+                    </div>
+                    <div class="curriculum-item">
+                        <span class="text-sm font-bold text-yellow-600">3학년 실천</span>
+                        <p class="text-gray-700 mt-1 font-semibold">실천기술론, 행정론, 정책론, 법제와 실천, 현장실습</p>
+                    </div>
+                </div>
+                <div class="clean-card bg-gray-50">
+                    <h4 class="font-bold mb-4 text-gray-400 uppercase text-xs tracking-widest">Major Electives</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">사회문제론</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">위기극복론</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">노인복지론</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">아동복지론</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">가족복지론</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">사례관리론</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">여성복지론</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 학습 방식 -->
+        <section id="method" class="tab-content">
+            <div class="text-center mb-12">
+                <span class="section-tag mb-4 inline-block">METHOD</span>
+                <h3 class="text-3xl font-bold font-gaegu">경험으로 완성하는 배움</h3>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="clean-card border-t-4 border-yellow-400">
+                    <div class="text-3xl mb-4">📝</div>
+                    <h4 class="text-xl font-bold mb-3">실천 중심 과제</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">직접 사회복지 기관을 방문하여 인터뷰하고, 실제 서비스 제공 과정을 조사하며 현장의 목소리를 듣습니다.</p>
+                </div>
+                <div class="clean-card border-t-4 border-yellow-400">
+                    <div class="text-3xl mb-4">💡</div>
+                    <h4 class="text-xl font-bold mb-3">창의적 기획</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">팀원들과 머리를 맞대어 특정 대상의 문제를 해결하기 위한 복지 프로그램을 기획하고 설계합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 사회복지실습 -->
+        <section id="practice" class="tab-content">
+            <div class="text-center mb-12">
+                <span class="section-tag mb-4 inline-block">FIELD INTERNSHIP</span>
+                <h3 class="text-3xl font-bold font-gaegu">이론과 실천을 잇는 160시간</h3>
+            </div>
+            <div class="clean-card bg-yellow-50 border-2 border-yellow-100 relative overflow-hidden">
+                <div class="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+                    <div class="flex-1">
+                        <h4 class="text-2xl font-bold mb-4 text-yellow-800">진짜 사회복지사가 되어가는 시간</h4>
+                        <p class="text-yellow-700 mb-8 leading-relaxed">
+                            3학년 하계방학 동안 실제 복지 현장에서 사회복지사의 업무를 직접 수행해봅니다. 
+                            상담 보조, 프로그램 운영 등을 통해 자신의 강점과 보완점을 발견하고 진로를 확정 짓는 소중한 시간입니다.
+                        </p>
+                        <div class="flex gap-4">
+                            <div class="bg-white px-5 py-3 rounded-2xl shadow-sm border border-yellow-200">
+                                <span class="block text-2xl font-bold text-yellow-500">160h</span>
+                                <span class="text-xs text-gray-400">실습 시간</span>
+                            </div>
+                            <div class="bg-white px-5 py-3 rounded-2xl shadow-sm border border-yellow-200">
+                                <span class="block text-2xl font-bold text-yellow-500">3학년</span>
+                                <span class="text-xs text-gray-400">권장 시기</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden md:block text-8xl opacity-20 transform -rotate-12">🐋</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 졸업 후 진로 -->
+        <section id="career" class="tab-content">
+            <div class="text-center mb-12">
+                <span class="section-tag mb-4 inline-block">CAREER PATH</span>
+                <h3 class="text-3xl font-bold font-gaegu">사회 곳곳에 스며드는 사복인의 길</h3>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="p-6 bg-gray-50 rounded-2xl text-center border border-gray-100">
+                    <div class="text-2xl mb-2">🏠</div>
+                    <p class="font-bold">사회복지사</p>
+                    <p class="text-xs text-gray-400 mt-1">복지관, 시설, 병원 등</p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-2xl text-center border border-gray-100">
+                    <div class="text-2xl mb-2">🏛️</div>
+                    <p class="font-bold">복지공무원</p>
+                    <p class="text-xs text-gray-400 mt-1">국가 및 지자체 행정</p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-2xl text-center border border-gray-100">
+                    <div class="text-2xl mb-2">🏫</div>
+                    <p class="font-bold">학교/청소년</p>
+                    <p class="text-xs text-gray-400 mt-1">학교복지사, 상담가</p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-2xl text-center border border-gray-100">
+                    <div class="text-2xl mb-2">🌍</div>
+                    <p class="font-bold">NGO/국제기구</p>
+                    <p class="text-xs text-gray-400 mt-1">비영리단체 활동가</p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-2xl text-center border border-gray-100">
+                    <div class="text-2xl mb-2">🔍</div>
+                    <p class="font-bold">연구자/교수</p>
+                    <p class="text-xs text-gray-400 mt-1">대학원 및 연구소</p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-2xl text-center border border-gray-100">
+                    <div class="text-2xl mb-2">💼</div>
+                    <p class="font-bold">기업 CSR</p>
+                    <p class="text-xs text-gray-400 mt-1">사회공헌팀 기획자</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 학과 활동 -->
+        <section id="activity" class="tab-content">
+            <div class="text-center mb-12">
+                <span class="section-tag mb-4 inline-block">STUDENT ACTIVITY</span>
+                <h3 class="text-3xl font-bold font-gaegu">함께하기에 즐거운 시간들</h3>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="clean-card bg-yellow-50/50 flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-xl font-bold mb-3 flex items-center gap-2">
+                            🌙 사복인의 밤
+                        </h4>
+                        <p class="text-gray-600 text-sm mb-6">선후배 간의 유대감을 쌓고 현직 선배님들의 조언을 들을 수 있는 우리들의 축제입니다.</p>
+                    </div>
+                    <button class="w-full py-3 bg-yellow-400 hover:bg-yellow-500 text-white font-bold rounded-xl transition-colors flex items-center justify-center gap-2 shadow-sm">
+                        <span>📸</span> 사진 보기
+                    </button>
+                </div>
+                <div class="clean-card bg-yellow-50/50 flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-xl font-bold mb-3 flex items-center gap-2">
+                            📊 학술제
+                        </h4>
+                        <p class="text-gray-600 text-sm mb-6">한 학기 동안 연구한 사회복지 이슈를 발표하며 전문적인 실천 역량을 뽐내는 자리입니다.</p>
+                    </div>
+                    <button class="w-full py-3 bg-yellow-400 hover:bg-yellow-500 text-white font-bold rounded-xl transition-colors flex items-center justify-center gap-2 shadow-sm">
+                        <span>📸</span> 사진 보기
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. 추천 대상 -->
+        <section id="recommend" class="tab-content">
+            <div class="text-center mb-12">
+                <span class="section-tag mb-4 inline-block">RECOMMENDED</span>
+                <h3 class="text-3xl font-bold font-gaegu">당신이 찾던 그곳일지 몰라요</h3>
+            </div>
+            <div class="grid gap-4 max-w-2xl mx-auto">
+                <div class="p-6 bg-white border-2 border-yellow-400 rounded-2xl flex items-center gap-4">
+                    <div class="text-2xl">✨</div>
+                    <p class="font-bold">사람의 숨겨진 강점을 찾아내는 것을 좋아하는 사람</p>
+                </div>
+                <div class="p-6 bg-white border-2 border-yellow-200 rounded-2xl flex items-center gap-4">
+                    <div class="text-2xl">🧩</div>
+                    <p class="font-bold">심리, 사회, 법 등 다양한 학문을 배우고 싶은 사람</p>
+                </div>
+                <div class="p-6 bg-white border-2 border-yellow-100 rounded-2xl flex items-center gap-4">
+                    <div class="text-2xl">👂</div>
+                    <p class="font-bold">다른 이의 이야기에 진심으로 귀 기울일 줄 아는 사람</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. 자격증 -->
+        <section id="cert" class="tab-content">
+            <div class="text-center mb-12">
+                <span class="section-tag mb-4 inline-block">CERTIFICATE</span>
+                <h3 class="text-3xl font-bold font-gaegu">취업을 위한 전문성 확보</h3>
+            </div>
+            <div class="max-w-2xl mx-auto clean-card text-center">
+                <div class="mb-10">
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Graduation Gift</p>
+                    <p class="text-4xl font-bold">사회복지사 <span class="text-yellow-500">2급</span></p>
+                    <p class="text-gray-500 mt-3">별도의 시험 없이 졸업과 동시에 취득 가능!</p>
+                </div>
+                <div class="h-px w-20 bg-gray-200 mx-auto mb-10"></div>
+                <div>
+                    <p class="text-2xl font-bold mb-2">사회복지사 1급 도전</p>
+                    <p class="text-gray-500 text-sm">전문가로서의 자질을 인증받는 국가전문자격 응시 자격 부여</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-50 py-16 text-center">
+        <h2 class="text-3xl font-gaegu font-bold mb-4">함께 고래를 꿈꾸지 않을래? 🐋</h2>
+        <p class="text-gray-400 text-sm">부산대학교 사회복지학과 부스에 방문해주셔서 감사합니다.</p>
+        <p class="text-xs text-gray-300 mt-10 tracking-widest uppercase">PERSONS IN SOLIDARITY</p>
+    </footer>
+
+</body>
+</html>
