@@ -204,7 +204,7 @@
         </div>
     </div>
 
-    <!-- 신환회 MT 모달 (추가됨) -->
+    <!-- 신환회 MT 모달 -->
     <div id="mtModal" class="modal" onclick="closeModal('mtModal')">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close-modal" onclick="closeModal('mtModal')">&times;</span>
@@ -314,10 +314,12 @@
             </div>
         </section>
 
-        <!-- 2. 배우는 내용 -->
+        <!-- 2. 배우는 내용 (수정됨: 요청 내용 반영) -->
         <section id="learn" class="tab-content">
             <div class="text-center mb-12"><span class="section-tag mb-4 inline-block">LEARNING</span><h3 class="text-3xl font-bold font-gaegu">무엇을 배우나요?</h3></div>
-            <div class="grid md:grid-cols-2 gap-8">
+            
+            <!-- 상단 요약 카드 -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
                 <div class="space-y-6">
                     <h3 class="text-2xl font-bold">인간과 사회를<br>통합적으로 바라봅니다</h3>
                     <p class="text-gray-500">개인의 심리적 특성부터 가족, 지역사회, 국가 제도까지 인간을 둘러싼 모든 환경을 분석합니다.</p>
@@ -325,6 +327,23 @@
                 <div class="grid gap-4">
                     <div class="p-5 border-l-4 border-yellow-400 bg-gray-50 rounded-r-xl"><h4 class="font-bold">실천적 개입 방법</h4><p class="text-sm text-gray-500">상담 기술과 사례관리 능력을 습득하여 삶의 실질적 변화를 이끌어냅니다.</p></div>
                     <div class="p-5 border-l-4 border-yellow-400 bg-gray-50 rounded-r-xl"><h4 class="font-bold">사회 구조 분석</h4><p class="text-sm text-gray-500">사회 정책과 제도의 형성과정을 이해하고 개선 방안을 모색합니다.</p></div>
+                </div>
+            </div>
+
+            <!-- 상세 교육 목표 및 연구 분야 (요청 내용) -->
+            <div class="space-y-6">
+                <div class="clean-card bg-yellow-50/20 border-l-8 border-yellow-400">
+                    <h4 class="text-xl font-bold mb-4">유능한 사회복지사 양성</h4>
+                    <p class="text-gray-700 leading-relaxed text-sm md:text-base">
+                        사회가 변화함에 따라 개인과 집단 및 지역사회는 다양한 문제와 욕구를 직면하게 된다는 점에서, 이들에 대하여 전문적인 개입을 통해 효과적으로 해결하기 위한 전문적인 사회서비스에 관한 지식과 기술을 연구하여 이를 통해 얻은 이론과 지식을 실제에 적용해보는 실습과정을 이수함으로써 유능한 사회복지사를 양성하고자 합니다.
+                    </p>
+                </div>
+
+                <div class="clean-card bg-blue-50/20 border-l-8 border-blue-400">
+                    <h4 class="text-xl font-bold mb-4">공공·민간 실무자 육성</h4>
+                    <p class="text-gray-700 leading-relaxed text-sm md:text-base">
+                        또한 우리나라에서 시행하고 있는 건강보험·국민연금·최저임금·산업재해보상보험·고용보험의 사회보장과 기초생활보장의 공공부조, 그리고 노인복지·아동복지·여성복지·가족복지·장애인복지 등에 관한 정책 및 제도·행정·법제를 연구하고 우리나라의 실정에 맞는 사회복지정책 및 제도의 바람직한 방향을 모색함으로써 공공·민간 복지 영역에서 활동하는 실무자를 육성하는데 교육목표를 두고 있습니다.
+                    </p>
                 </div>
             </div>
         </section>
@@ -339,9 +358,19 @@
                     <div class="curriculum-item"><span class="text-sm font-bold text-yellow-600">3학년 실천</span><p class="text-gray-700 mt-1 font-semibold">실천기술론, 행정론, 정책론, 법제와 실천, 현장실습</p></div>
                 </div>
                 <div class="clean-card bg-gray-50">
-                    <h4 class="font-bold mb-4 text-gray-400 uppercase text-xs tracking-widest">Major Electives</h4>
+                    <h4 class="font-bold mb-4 text-gray-400 uppercase text-xs tracking-widest">전공선택과목</h4>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">사회문제론</span><span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">위기극복론</span><span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">노인복지론</span><span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">아동복지론</span><span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">가족복지론</span><span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">사례관리론</span><span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">여성복지론</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">사회문제론</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">위기극복론</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">노인복지론</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">아동복지론</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">가족복지론</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">사례관리론</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">여성복지론</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">장애인복지론</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">학교사회복지론</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">자원봉사론</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">정신건강사회복지론</span>
                     </div>
                 </div>
             </div>
@@ -353,7 +382,7 @@
             <div class="space-y-6">
                 <div class="clean-card border-l-8 border-yellow-400 py-8">
                     <h4 class="text-xl font-bold mb-3">탄탄한 이론 강의와 실천적 과제</h4>
-                    <p class="text-gray-600 leading-relaxed mb-4">우리 학과는 교수님의 강의 형식을 통해 사회복지의 핵심 이론들을 깊이 있게 학습합니다. 단순히 이론 암기에 그치지 않고, 과제를 통해 배운 내용을 실제 클라이언트 상황에 대입해보고 직접 개입해보는 과정을 거칩니다.</p>
+                    <p class="text-gray-600 leading-relaxed mb-4">사회복지학과는 교수님의 강의 형식을 통해 사회복지의 핵심 이론들을 깊이 있게 학습합니다. 단순히 이론 암기에 그치지 않고, 과제를 통해 배운 내용을 실제 클라이언트 상황에 대입해보고 직접 개입해보는 과정을 거칩니다.</p>
                     <div class="bg-yellow-50 p-4 rounded-xl"><p class="text-sm font-semibold text-yellow-800">🤝 협동력을 키우는 조별과제</p><p class="text-sm text-gray-500 mt-1">사회복지사의 핵심 역량인 협동력과 의사소통 능력을 기르기 위해 다양한 조별과제가 활발히 진행됩니다.</p></div>
                 </div>
                 <div class="grid md:grid-cols-2 gap-6">
@@ -405,7 +434,7 @@
             </div>
         </section>
 
-        <!-- 7. 학과 활동 (수정됨: 신환회 MT 추가) -->
+        <!-- 7. 학과 활동 -->
         <section id="activity" class="tab-content">
             <div class="text-center mb-12"><span class="section-tag mb-4 inline-block">STUDENT ACTIVITY</span><h3 class="text-3xl font-bold font-gaegu">함께하기에 즐거운 시간들</h3></div>
             <div class="grid md:grid-cols-3 gap-6">
