@@ -130,7 +130,6 @@
             transform: scale(1.05);
         }
 
-        /* Image Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -170,7 +169,7 @@
 </head>
 <body>
 
-    <!-- 사복인의 밤 전용 모달 -->
+    <!-- 사복인의 밤 모달 -->
     <div id="nightModal" class="modal" onclick="closeModal('nightModal')">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close-modal" onclick="closeModal('nightModal')">&times;</span>
@@ -186,7 +185,7 @@
         </div>
     </div>
 
-    <!-- 학술제 전용 모달 -->
+    <!-- 학술제 모달 -->
     <div id="festivalModal" class="modal" onclick="closeModal('festivalModal')">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close-modal" onclick="closeModal('festivalModal')">&times;</span>
@@ -200,6 +199,25 @@
                 </div>
                 <div class="rounded-xl overflow-hidden shadow-lg border border-gray-100">
                     <img src="./KakaoTalk_20260428_112621496_02.jpg" alt="학술제 사진 3" class="w-full h-auto object-cover" onerror="this.src='https://placehold.co/600x400?text=Photo+3+Missing'">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 신환회 MT 모달 (추가됨) -->
+    <div id="mtModal" class="modal" onclick="closeModal('mtModal')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-modal" onclick="closeModal('mtModal')">&times;</span>
+            <h3 class="text-2xl font-bold mb-6 text-center font-gaegu">신환회 & MT 🎉</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="rounded-xl overflow-hidden shadow-lg border border-gray-100">
+                    <img src="./KakaoTalk_20260428_114501963.jpg" alt="신환회 MT 사진 1" class="w-full h-auto object-cover" onerror="this.src='https://placehold.co/600x400?text=Photo+1+Missing'">
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-lg border border-gray-100">
+                    <img src="./KakaoTalk_20260428_114515062.jpg" alt="신환회 MT 사진 2" class="w-full h-auto object-cover" onerror="this.src='https://placehold.co/600x400?text=Photo+2+Missing'">
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-lg border border-gray-100">
+                    <img src="./KakaoTalk_20260428_114628569.jpg" alt="신환회 MT 사진 3" class="w-full h-auto object-cover" onerror="this.src='https://placehold.co/600x400?text=Photo+3+Missing'">
                 </div>
             </div>
         </div>
@@ -227,35 +245,24 @@
         }
 
         document.addEventListener('mousemove', (e) => {
-            if (Math.random() > 0.85) {
-                createParticle(e.clientX, e.clientY);
-            }
+            if (Math.random() > 0.85) { createParticle(e.clientX, e.clientY); }
         });
 
         document.addEventListener('mousedown', (e) => {
-            for (let i = 0; i < 12; i++) {
-                createParticle(e.clientX, e.clientY, true);
-            }
+            for (let i = 0; i < 12; i++) { createParticle(e.clientX, e.clientY, true); }
         });
 
         function showTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
+            document.querySelectorAll('.tab-content').forEach(content => { content.classList.remove('active'); });
             document.getElementById(tabId).classList.add('active');
-            
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            document.querySelectorAll('.nav-btn').forEach(btn => { btn.classList.remove('active'); });
             event.currentTarget.classList.add('active');
-            
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function showCareerDetail(id) {
             document.querySelectorAll('.career-detail').forEach(detail => detail.classList.remove('active'));
             document.getElementById(id).classList.add('active');
-            
             document.querySelectorAll('.career-nav-btn').forEach(btn => btn.classList.remove('active'));
             event.currentTarget.classList.add('active');
         }
@@ -299,77 +306,42 @@
         <section id="intro" class="tab-content active relative text-center">
             <div class="sparkle-decoration" style="top:-20px; left:10%;"></div>
             <div class="sparkle-decoration" style="bottom:0; right:5%; animation-delay: 1s;"></div>
-            
             <span class="section-tag mb-4 inline-block">DEPARTMENT INTRO</span>
-            <h2 class="text-4xl md:text-5xl font-bold mb-10 leading-tight">
-                사람임이 한없이 자랑스러운 세상을<br>
-                <span class="text-yellow-500">만들기 위해 함께 뛰는 것</span>
-            </h2>
+            <h2 class="text-4xl md:text-5xl font-bold mb-10 leading-tight">사람임이 한없이 자랑스러운 세상을<br><span class="text-yellow-500">만들기 위해 함께 뛰는 것</span></h2>
             <div class="clean-card bg-yellow-50/30 text-lg leading-relaxed">
                 <p class="mb-6 font-semibold text-yellow-700 italic font-gaegu text-2xl">“푸른 바다가 고래를 위하여 푸르다는 걸 모르는 사람은 아직 사랑을 모르지”</p>
-                <p class="text-gray-600">
-                    세상에는 자신의 바다가 스스로를 위해 존재한다는 것을 모르는 이들이 많습니다.<br>
-                    우리는 딱딱한 껍질 속에 스스로의 벽을 쌓고 있는 사람들이 그 벽을 깨고 나와<br>
-                    싱싱한 고래임을 깨닫게 돕기 위해 오늘도 이 길을 걷고 있습니다.
-                </p>
+                <p class="text-gray-600">세상에는 자신의 바다가 스스로를 위해 존재한다는 것을 모르는 이들이 많습니다.<br>우리는 딱딱한 껍질 속에 스스로의 벽을 쌓고 있는 사람들이 그 벽을 깨고 나와<br>싱싱한 고래임을 깨닫게 돕기 위해 오늘도 이 길을 걷고 있습니다.</p>
             </div>
         </section>
 
         <!-- 2. 배우는 내용 -->
         <section id="learn" class="tab-content">
-            <div class="text-center mb-12">
-                <span class="section-tag mb-4 inline-block">LEARNING</span>
-                <h3 class="text-3xl font-bold font-gaegu">무엇을 배우나요?</h3>
-            </div>
+            <div class="text-center mb-12"><span class="section-tag mb-4 inline-block">LEARNING</span><h3 class="text-3xl font-bold font-gaegu">무엇을 배우나요?</h3></div>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="space-y-6">
                     <h3 class="text-2xl font-bold">인간과 사회를<br>통합적으로 바라봅니다</h3>
                     <p class="text-gray-500">개인의 심리적 특성부터 가족, 지역사회, 국가 제도까지 인간을 둘러싼 모든 환경을 분석합니다.</p>
                 </div>
                 <div class="grid gap-4">
-                    <div class="p-5 border-l-4 border-yellow-400 bg-gray-50 rounded-r-xl">
-                        <h4 class="font-bold">실천적 개입 방법</h4>
-                        <p class="text-sm text-gray-500">상담 기술과 사례관리 능력을 습득하여 삶의 실질적 변화를 이끌어냅니다.</p>
-                    </div>
-                    <div class="p-5 border-l-4 border-yellow-400 bg-gray-50 rounded-r-xl">
-                        <h4 class="font-bold">사회 구조 분석</h4>
-                        <p class="text-sm text-gray-500">사회 정책과 제도의 형성과정을 이해하고 개선 방안을 모색합니다.</p>
-                    </div>
+                    <div class="p-5 border-l-4 border-yellow-400 bg-gray-50 rounded-r-xl"><h4 class="font-bold">실천적 개입 방법</h4><p class="text-sm text-gray-500">상담 기술과 사례관리 능력을 습득하여 삶의 실질적 변화를 이끌어냅니다.</p></div>
+                    <div class="p-5 border-l-4 border-yellow-400 bg-gray-50 rounded-r-xl"><h4 class="font-bold">사회 구조 분석</h4><p class="text-sm text-gray-500">사회 정책과 제도의 형성과정을 이해하고 개선 방안을 모색합니다.</p></div>
                 </div>
             </div>
         </section>
 
         <!-- 3. 커리큘럼 -->
         <section id="curri" class="tab-content">
-            <div class="text-center mb-12">
-                <span class="section-tag mb-4 inline-block">CURRICULUM</span>
-                <h3 class="text-3xl font-bold font-gaegu">탄탄한 성장을 지원하는 교과과정</h3>
-            </div>
+            <div class="text-center mb-12"><span class="section-tag mb-4 inline-block">CURRICULUM</span><h3 class="text-3xl font-bold font-gaegu">탄탄한 성장을 지원하는 교과과정</h3></div>
             <div class="grid md:grid-cols-2 gap-12">
                 <div class="space-y-8">
-                    <div class="curriculum-item">
-                        <span class="text-sm font-bold text-yellow-600">1학년 기초</span>
-                        <p class="text-gray-700 mt-1">사회복지학개론, 인간행동과 사회환경, 사회복지조사론, 사회복지역사</p>
-                    </div>
-                    <div class="curriculum-item">
-                        <span class="text-sm font-bold text-yellow-600">2학년 심화</span>
-                        <p class="text-gray-700 mt-1">사회복지실천론, 지역사회복지론</p>
-                    </div>
-                    <div class="curriculum-item">
-                        <span class="text-sm font-bold text-yellow-600">3학년 실천</span>
-                        <p class="text-gray-700 mt-1 font-semibold">실천기술론, 행정론, 정책론, 법제와 실천, 현장실습</p>
-                    </div>
+                    <div class="curriculum-item"><span class="text-sm font-bold text-yellow-600">1학년 기초</span><p class="text-gray-700 mt-1">사회복지학개론, 인간행동과 사회환경, 사회복지조사론, 사회복지역사</p></div>
+                    <div class="curriculum-item"><span class="text-sm font-bold text-yellow-600">2학년 심화</span><p class="text-gray-700 mt-1">사회복지실천론, 지역사회복지론</p></div>
+                    <div class="curriculum-item"><span class="text-sm font-bold text-yellow-600">3학년 실천</span><p class="text-gray-700 mt-1 font-semibold">실천기술론, 행정론, 정책론, 법제와 실천, 현장실습</p></div>
                 </div>
                 <div class="clean-card bg-gray-50">
                     <h4 class="font-bold mb-4 text-gray-400 uppercase text-xs tracking-widest">Major Electives</h4>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">사회문제론</span>
-                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">위기극복론</span>
-                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">노인복지론</span>
-                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">아동복지론</span>
-                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">가족복지론</span>
-                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">사례관리론</span>
-                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">여성복지론</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">사회문제론</span><span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">위기극복론</span><span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">노인복지론</span><span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">아동복지론</span><span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">가족복지론</span><span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">사례관리론</span><span class="px-3 py-1 bg-white border border-gray-200 rounded-md text-sm">여성복지론</span>
                     </div>
                 </div>
             </div>
@@ -377,65 +349,31 @@
 
         <!-- 4. 학습 방식 -->
         <section id="method" class="tab-content">
-            <div class="text-center mb-12">
-                <span class="section-tag mb-4 inline-block">LEARNING METHOD</span>
-                <h3 class="text-3xl font-bold font-gaegu">이론을 넘어 실천으로</h3>
-            </div>
+            <div class="text-center mb-12"><span class="section-tag mb-4 inline-block">LEARNING METHOD</span><h3 class="text-3xl font-bold font-gaegu">이론을 넘어 실천으로</h3></div>
             <div class="space-y-6">
                 <div class="clean-card border-l-8 border-yellow-400 py-8">
                     <h4 class="text-xl font-bold mb-3">탄탄한 이론 강의와 실천적 과제</h4>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        우리 학과는 교수님의 강의 형식을 통해 사회복지의 핵심 이론들을 깊이 있게 학습합니다. 
-                        단순히 이론 암기에 그치지 않고, 과제를 통해 배운 내용을 실제 클라이언트 상황에 대입해보고 직접 개입해보는 과정을 거칩니다.
-                    </p>
-                    <div class="bg-yellow-50 p-4 rounded-xl">
-                        <p class="text-sm font-semibold text-yellow-800">🤝 협동력을 키우는 조별과제</p>
-                        <p class="text-sm text-gray-500 mt-1">사회복지사의 핵심 역량인 협동력과 의사소통 능력을 기르기 위해 다양한 조별과제가 활발히 진행됩니다.</p>
-                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-4">우리 학과는 교수님의 강의 형식을 통해 사회복지의 핵심 이론들을 깊이 있게 학습합니다. 단순히 이론 암기에 그치지 않고, 과제를 통해 배운 내용을 실제 클라이언트 상황에 대입해보고 직접 개입해보는 과정을 거칩니다.</p>
+                    <div class="bg-yellow-50 p-4 rounded-xl"><p class="text-sm font-semibold text-yellow-800">🤝 협동력을 키우는 조별과제</p><p class="text-sm text-gray-500 mt-1">사회복지사의 핵심 역량인 협동력과 의사소통 능력을 기르기 위해 다양한 조별과제가 활발히 진행됩니다.</p></div>
                 </div>
-
                 <div class="grid md:grid-cols-2 gap-6">
-                    <div class="clean-card bg-gray-50">
-                        <span class="text-xs font-bold text-yellow-600 tracking-widest uppercase">Assignment Case 01</span>
-                        <h4 class="font-bold mt-2 mb-3 text-lg">현장 인터뷰 및 이론 적용</h4>
-                        <p class="text-sm text-gray-500 leading-relaxed">
-                            실제 사회복지기관을 직접 방문하여 실무자와 인터뷰를 진행하고, 현장의 시스템을 학교에서 배운 복지 이론과 연결하여 분석합니다.
-                        </p>
-                    </div>
-                    <div class="clean-card bg-gray-50">
-                        <span class="text-xs font-bold text-yellow-600 tracking-widest uppercase">Assignment Case 02</span>
-                        <h4 class="font-bold mt-2 mb-3 text-lg">매체 속 인물 개입 모델링</h4>
-                        <p class="text-sm text-gray-500 leading-relaxed">
-                            영화나 드라마 속 인물을 가상의 클라이언트로 설정하고, 적절한 개입 실천 모델을 선택하여 구체적인 해결 방안과 개입 계획을 수립해봅니다.
-                        </p>
-                    </div>
+                    <div class="clean-card bg-gray-50"><span class="text-xs font-bold text-yellow-600 tracking-widest uppercase">Assignment Case 01</span><h4 class="font-bold mt-2 mb-3 text-lg">현장 인터뷰 및 이론 적용</h4><p class="text-sm text-gray-500 leading-relaxed">실제 사회복지기관을 직접 방문하여 실무자와 인터뷰를 진행하고, 현장의 시스템을 학교에서 배운 복지 이론과 연결하여 분석합니다.</p></div>
+                    <div class="clean-card bg-gray-50"><span class="text-xs font-bold text-yellow-600 tracking-widest uppercase">Assignment Case 02</span><h4 class="font-bold mt-2 mb-3 text-lg">매체 속 인물 개입 모델링</h4><p class="text-sm text-gray-500 leading-relaxed">영화나 드라마 속 인물을 가상의 클라이언트로 설정하고, 적절한 개입 실천 모델을 선택하여 구체적인 해결 방안과 개입 계획을 수립해봅니다.</p></div>
                 </div>
             </div>
         </section>
 
         <!-- 5. 사회복지실습 -->
         <section id="practice" class="tab-content">
-            <div class="text-center mb-12">
-                <span class="section-tag mb-4 inline-block">FIELD INTERNSHIP</span>
-                <h3 class="text-3xl font-bold font-gaegu">사회복지현장실습</h3>
-            </div>
+            <div class="text-center mb-12"><span class="section-tag mb-4 inline-block">FIELD INTERNSHIP</span><h3 class="text-3xl font-bold font-gaegu">사회복지현장실습</h3></div>
             <div class="clean-card bg-yellow-50 border-2 border-yellow-100 relative overflow-hidden">
                 <div class="relative z-10 flex flex-col md:flex-row gap-8 items-center">
                     <div class="flex-1">
                         <h4 class="text-2xl font-bold mb-4 text-yellow-800">진짜 사회복지사가 되어가는 시간</h4>
-                        <p class="text-yellow-700 mb-8 leading-relaxed">
-                            3학년 하계방학 동안 실제 복지 현장에서 사회복지사의 업무를 직접 수행해봅니다. 
-                            상담 보조, 프로그램 운영 등을 통해 자신의 강점과 보완점을 발견하고 진로를 확정 짓는 소중한 시간입니다.
-                        </p>
+                        <p class="text-yellow-700 mb-8 leading-relaxed">3학년 하계방학 동안 실제 복지 현장에서 사회복지사의 업무를 직접 수행해봅니다. 상담 보조, 프로그램 운영 등을 통해 자신의 강점과 보완점을 발견하고 진로를 확정 짓는 소중한 시간입니다.</p>
                         <div class="flex gap-4">
-                            <div class="bg-white px-5 py-3 rounded-2xl shadow-sm border border-yellow-200">
-                                <span class="block text-2xl font-bold text-yellow-500">160h</span>
-                                <span class="text-xs text-gray-400">실습 시간</span>
-                            </div>
-                            <div class="bg-white px-5 py-3 rounded-2xl shadow-sm border border-yellow-200">
-                                <span class="block text-2xl font-bold text-yellow-500">3학년</span>
-                                <span class="text-xs text-gray-400">권장 시기</span>
-                            </div>
+                            <div class="bg-white px-5 py-3 rounded-2xl shadow-sm border border-yellow-200"><span class="block text-2xl font-bold text-yellow-500">160h</span><span class="text-xs text-gray-400">실습 시간</span></div>
+                            <div class="bg-white px-5 py-3 rounded-2xl shadow-sm border border-yellow-200"><span class="block text-2xl font-bold text-yellow-500">3학년</span><span class="text-xs text-gray-400">권장 시기</span></div>
                         </div>
                     </div>
                     <div class="hidden md:block text-8xl opacity-20 transform -rotate-12">🐋</div>
@@ -445,271 +383,66 @@
 
         <!-- 6. 졸업 후 진로 -->
         <section id="career" class="tab-content">
-            <div class="text-center mb-12">
-                <span class="section-tag mb-4 inline-block">CAREER EXPLORER</span>
-                <h3 class="text-3xl font-bold font-gaegu mb-4">졸업 후 어디로 가나요?</h3>
-                <p class="text-gray-400 text-sm">항목을 클릭하여 상세 정보를 확인해보세요</p>
-            </div>
-            
+            <div class="text-center mb-12"><span class="section-tag mb-4 inline-block">CAREER EXPLORER</span><h3 class="text-3xl font-bold font-gaegu mb-4">졸업 후 어디로 가나요?</h3><p class="text-gray-400 text-sm">항목을 클릭하여 상세 정보를 확인해보세요</p></div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-                <button onclick="showCareerDetail('sw-detail')" class="career-nav-btn p-4 bg-gray-50 rounded-2xl text-center border border-gray-100 transition-all hover:bg-yellow-50 group">
-                    <div class="text-3xl mb-1 group-hover:scale-110 transition-transform">🏠</div>
-                    <p class="font-bold text-sm">사회복지사</p>
-                </button>
-                <button onclick="showCareerDetail('civil-detail')" class="career-nav-btn p-4 bg-gray-50 rounded-2xl text-center border border-gray-100 transition-all hover:bg-yellow-50 group">
-                    <div class="text-3xl mb-1 group-hover:scale-110 transition-transform">🏛️</div>
-                    <p class="font-bold text-sm">공무원/공기업</p>
-                </button>
-                <button onclick="showCareerDetail('medical-detail')" class="career-nav-btn p-4 bg-gray-50 rounded-2xl text-center border border-gray-100 transition-all hover:bg-yellow-50 group">
-                    <div class="text-3xl mb-1 group-hover:scale-110 transition-transform">🏥</div>
-                    <p class="font-bold text-sm">의료/정신건강</p>
-                </button>
-                <button onclick="showCareerDetail('school-detail')" class="career-nav-btn p-4 bg-gray-50 rounded-2xl text-center border border-gray-100 transition-all hover:bg-yellow-50 group">
-                    <div class="text-3xl mb-1 group-hover:scale-110 transition-transform">🏫</div>
-                    <p class="font-bold text-sm">학교/청소년</p>
-                </button>
-                <button onclick="showCareerDetail('ngo-detail')" class="career-nav-btn p-4 bg-gray-50 rounded-2xl text-center border border-gray-100 transition-all hover:bg-yellow-50 group">
-                    <div class="text-3xl mb-1 group-hover:scale-110 transition-transform">🌍</div>
-                    <p class="font-bold text-sm">NGO/국제기구</p>
-                </button>
-                <button onclick="showCareerDetail('csr-detail')" class="career-nav-btn p-4 bg-gray-50 rounded-2xl text-center border border-gray-100 transition-all hover:bg-yellow-50 group">
-                    <div class="text-3xl mb-1 group-hover:scale-110 transition-transform">💼</div>
-                    <p class="font-bold text-sm">기업 CSR</p>
-                </button>
-                <button onclick="showCareerDetail('research-detail')" class="career-nav-btn p-4 bg-gray-50 rounded-2xl text-center border border-gray-100 transition-all hover:bg-yellow-50 group">
-                    <div class="text-3xl mb-1 group-hover:scale-110 transition-transform">🔍</div>
-                    <p class="font-bold text-sm">연구자/교수</p>
-                </button>
+                <button onclick="showCareerDetail('sw-detail')" class="career-nav-btn p-4 bg-gray-50 rounded-2xl text-center border border-gray-100 transition-all hover:bg-yellow-50 group"><div class="text-3xl mb-1 group-hover:scale-110 transition-transform">🏠</div><p class="font-bold text-sm">사회복지사</p></button>
+                <button onclick="showCareerDetail('civil-detail')" class="career-nav-btn p-4 bg-gray-50 rounded-2xl text-center border border-gray-100 transition-all hover:bg-yellow-50 group"><div class="text-3xl mb-1 group-hover:scale-110 transition-transform">🏛️</div><p class="font-bold text-sm">공무원/공기업</p></button>
+                <button onclick="showCareerDetail('medical-detail')" class="career-nav-btn p-4 bg-gray-50 rounded-2xl text-center border border-gray-100 transition-all hover:bg-yellow-50 group"><div class="text-3xl mb-1 group-hover:scale-110 transition-transform">🏥</div><p class="font-bold text-sm">의료/정신건강</p></button>
+                <button onclick="showCareerDetail('school-detail')" class="career-nav-btn p-4 bg-gray-50 rounded-2xl text-center border border-gray-100 transition-all hover:bg-yellow-50 group"><div class="text-3xl mb-1 group-hover:scale-110 transition-transform">🏫</div><p class="font-bold text-sm">학교/청소년</p></button>
+                <button onclick="showCareerDetail('ngo-detail')" class="career-nav-btn p-4 bg-gray-50 rounded-2xl text-center border border-gray-100 transition-all hover:bg-yellow-50 group"><div class="text-3xl mb-1 group-hover:scale-110 transition-transform">🌍</div><p class="font-bold text-sm">NGO/국제기구</p></button>
+                <button onclick="showCareerDetail('csr-detail')" class="career-nav-btn p-4 bg-gray-50 rounded-2xl text-center border border-gray-100 transition-all hover:bg-yellow-50 group"><div class="text-3xl mb-1 group-hover:scale-110 transition-transform">💼</div><p class="font-bold text-sm">기업 CSR</p></button>
+                <button onclick="showCareerDetail('research-detail')" class="career-nav-btn p-4 bg-gray-50 rounded-2xl text-center border border-gray-100 transition-all hover:bg-yellow-50 group"><div class="text-3xl mb-1 group-hover:scale-110 transition-transform">🔍</div><p class="font-bold text-sm">연구자/교수</p></button>
             </div>
-
             <div id="career-details" class="min-h-[300px]">
-                <div id="career-placeholder" class="career-detail active text-center py-20 border-2 border-dashed border-gray-100 rounded-3xl">
-                    <p class="text-gray-300 font-gaegu text-2xl">아이콘을 클릭하면 상세 정보를 볼 수 있어요!</p>
-                </div>
-
-                <div id="sw-detail" class="career-detail clean-card border-t-8 border-yellow-400">
-                    <div class="flex items-center gap-4 mb-6">
-                        <span class="text-4xl">🏠</span>
-                        <h4 class="text-2xl font-bold">지역사회 사회복지사</h4>
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div>
-                            <h5 class="font-bold text-yellow-600 mb-2 underline">주요 기관</h5>
-                            <p class="text-sm text-gray-600">종합사회복지관, 노인/장애인복지관, 가족센터</p>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-yellow-600 mb-2 underline">주요 업무</h5>
-                            <p class="text-sm text-gray-600">사례관리, 복지 프로그램 기획 및 운영, 지역사회 자원 연계</p>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-yellow-600 mb-2 underline">핵심 역량</h5>
-                            <p class="text-sm text-gray-600">커뮤니케이션 기술, 공감 능력, 행정 수행 능력</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="civil-detail" class="career-detail clean-card border-t-8 border-blue-400">
-                    <div class="flex items-center gap-4 mb-6">
-                        <span class="text-4xl">🏛️</span>
-                        <h4 class="text-2xl font-bold">공무원 및 공기업(공단)</h4>
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div>
-                            <h5 class="font-bold text-blue-600 mb-2 underline">주요 기관</h5>
-                            <p class="text-sm text-gray-600">지자체 행정복지센터, 국민연금공단(NPS), 국민건강보험공단(NHIS), 근로복지공단</p>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-blue-600 mb-2 underline">주요 업무</h5>
-                            <p class="text-sm text-gray-600">사회보장급여 심사 및 관리, 연금/보험 가입 지원, 국가 복지 정책 집행</p>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-blue-600 mb-2 underline">핵심 역량</h5>
-                            <p class="text-sm text-gray-600">정책 및 제도 분석력, 행정 전문성, 공공 가치 의식</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="medical-detail" class="career-detail clean-card border-t-8 border-red-400">
-                    <div class="flex items-center gap-4 mb-6">
-                        <span class="text-4xl">🏥</span>
-                        <h4 class="text-2xl font-bold">의료 및 정신건강 전문가</h4>
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div>
-                            <h5 class="font-bold text-red-600 mb-2 underline">주요 기관</h5>
-                            <p class="text-sm text-gray-600">대학병원(의료사회복지), 정신건강복지센터, 치매안심센터, 정신과 전문병원</p>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-red-600 mb-2 underline">주요 업무</h5>
-                            <p class="text-sm text-gray-600">환자 경제적 지원 연계, 상담 및 심리사회적 사정, 사회복귀 지원</p>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-red-600 mb-2 underline">핵심 역량</h5>
-                            <p class="text-sm text-gray-600">의료 지식 협력 역량, 위기 개입 상담 능력</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="school-detail" class="career-detail clean-card border-t-8 border-green-400">
-                    <div class="flex items-center gap-4 mb-6">
-                        <span class="text-4xl">🏫</span>
-                        <h4 class="text-2xl font-bold">학교복지사 및 청소년 전문가</h4>
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div>
-                            <h5 class="font-bold text-green-600 mb-2 underline">주요 기관</h5>
-                            <p class="text-sm text-gray-600">초·중·고등학교, 청소년수련관, 청소년상담복지센터</p>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-green-600 mb-2 underline">주요 업무</h5>
-                            <p class="text-sm text-gray-600">학교폭력 예방 상담, 취약계층 학생 지원, 프로그램 개발</p>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-green-600 mb-2 underline">핵심 역량</h5>
-                            <p class="text-sm text-gray-600">발달단계 이해, 위기 상담 능력, 지역사회 연계</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="ngo-detail" class="career-detail clean-card border-t-8 border-orange-400">
-                    <div class="flex items-center gap-4 mb-6">
-                        <span class="text-4xl">🌍</span>
-                        <h4 class="text-2xl font-bold">NGO 및 국제기구</h4>
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div>
-                            <h5 class="font-bold text-orange-600 mb-2 underline">주요 기관</h5>
-                            <p class="text-sm text-gray-600">월드비전, 유니세프, 초록우산 어린이재단, 비영리단체</p>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-orange-600 mb-2 underline">주요 업무</h5>
-                            <p class="text-sm text-gray-600">국제구호 기획, 모금 홍보, 사회적 옹호 활동</p>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-orange-600 mb-2 underline">핵심 역량</h5>
-                            <p class="text-sm text-gray-600">글로벌 커뮤니케이션, 대외 협력 역량, 분석력</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="csr-detail" class="career-detail clean-card border-t-8 border-indigo-400">
-                    <div class="flex items-center gap-4 mb-6">
-                        <span class="text-4xl">💼</span>
-                        <h4 class="text-2xl font-bold">기업 CSR 및 ESG 전문가</h4>
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div>
-                            <h5 class="font-bold text-indigo-600 mb-2 underline">주요 기관</h5>
-                            <p class="text-sm text-gray-600">대기업 사회공헌팀(삼성전자, SK 등), 복지재단</p>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-indigo-600 mb-2 underline">주요 업무</h5>
-                            <p class="text-sm text-gray-600">기업 사회공헌 기획, ESG 전략 지원, 이해관계자 협력</p>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-indigo-600 mb-2 underline">핵심 역량</h5>
-                            <p class="text-sm text-gray-600">비즈니스 마인드셋, 가치 측정, 유연한 소통</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="research-detail" class="career-detail clean-card border-t-8 border-purple-400">
-                    <div class="flex items-center gap-4 mb-6">
-                        <span class="text-4xl">🔍</span>
-                        <h4 class="text-2xl font-bold">학계 및 정책 연구</h4>
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div>
-                            <h5 class="font-bold text-purple-600 mb-2 underline">주요 기관</h5>
-                            <p class="text-sm text-gray-600">한국보건사회연구원, 시·도 연구원, 대학교</p>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-purple-600 mb-2 underline">주요 업무</h5>
-                            <p class="text-sm text-gray-600">정책 지표 개발, 사회조사 분석, 학술 연구 및 교육</p>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-purple-600 mb-2 underline">핵심 역량</h5>
-                            <p class="text-sm text-gray-600">데이터 분석 기술, 논리적 글쓰기, 전문 지식</p>
-                        </div>
-                    </div>
-                </div>
+                <div id="career-placeholder" class="career-detail active text-center py-20 border-2 border-dashed border-gray-100 rounded-3xl"><p class="text-gray-300 font-gaegu text-2xl">아이콘을 클릭하면 상세 정보를 볼 수 있어요!</p></div>
+                <div id="sw-detail" class="career-detail clean-card border-t-8 border-yellow-400"><div class="flex items-center gap-4 mb-6"><span class="text-4xl">🏠</span><h4 class="text-2xl font-bold">지역사회 사회복지사</h4></div><div class="grid md:grid-cols-3 gap-8"><div><h5 class="font-bold text-yellow-600 mb-2 underline">주요 기관</h5><p class="text-sm text-gray-600">종합사회복지관, 노인/장애인복지관, 가족센터</p></div><div><h5 class="font-bold text-yellow-600 mb-2 underline">주요 업무</h5><p class="text-sm text-gray-600">사례관리, 복지 프로그램 기획 및 운영, 지역사회 자원 연계</p></div><div><h5 class="font-bold text-yellow-600 mb-2 underline">핵심 역량</h5><p class="text-sm text-gray-600">커뮤니케이션 기술, 공감 능력, 행정 수행 능력</p></div></div></div>
+                <div id="civil-detail" class="career-detail clean-card border-t-8 border-blue-400"><div class="flex items-center gap-4 mb-6"><span class="text-4xl">🏛️</span><h4 class="text-2xl font-bold">공무원 및 공기업(공단)</h4></div><div class="grid md:grid-cols-3 gap-8"><div><h5 class="font-bold text-blue-600 mb-2 underline">주요 기관</h5><p class="text-sm text-gray-600">지자체 행정복지센터, 국민연금공단(NPS), 국민건강보험공단(NHIS), 근로복지공단</p></div><div><h5 class="font-bold text-blue-600 mb-2 underline">주요 업무</h5><p class="text-sm text-gray-600">사회보장급여 심사 및 관리, 연금/보험 가입 지원, 국가 복지 정책 집행</p></div><div><h5 class="font-bold text-blue-600 mb-2 underline">핵심 역량</h5><p class="text-sm text-gray-600">정책 및 제도 분석력, 행정 전문성, 공공 가치 의식</p></div></div></div>
+                <div id="medical-detail" class="career-detail clean-card border-t-8 border-red-400"><div class="flex items-center gap-4 mb-6"><span class="text-4xl">🏥</span><h4 class="text-2xl font-bold">의료 및 정신건강 전문가</h4></div><div class="grid md:grid-cols-3 gap-8"><div><h5 class="font-bold text-red-600 mb-2 underline">주요 기관</h5><p class="text-sm text-gray-600">대학병원(의료사회복지), 정신건강복지센터, 치매안심센터, 정신과 전문병원</p></div><div><h5 class="font-bold text-red-600 mb-2 underline">주요 업무</h5><p class="text-sm text-gray-600">환자 경제적 지원 연계, 상담 및 심리사회적 사정, 사회복귀 지원</p></div><div><h5 class="font-bold text-red-600 mb-2 underline">핵심 역량</h5><p class="text-sm text-gray-600">의료 지식 협력 역량, 위기 개입 상담 능력</p></div></div></div>
+                <div id="school-detail" class="career-detail clean-card border-t-8 border-green-400"><div class="flex items-center gap-4 mb-6"><span class="text-4xl">🏫</span><h4 class="text-2xl font-bold">학교복지사 및 청소년 전문가</h4></div><div class="grid md:grid-cols-3 gap-8"><div><h5 class="font-bold text-green-600 mb-2 underline">주요 기관</h5><p class="text-sm text-gray-600">초·중·고등학교, 청소년수련관, 청소년상담복지센터</p></div><div><h5 class="font-bold text-green-600 mb-2 underline">주요 업무</h5><p class="text-sm text-gray-600">학교폭력 예방 상담, 취약계층 학생 지원, 프로그램 개발</p></div><div><h5 class="font-bold text-green-600 mb-2 underline">핵심 역량</h5><p class="text-sm text-gray-600">발달단계 이해, 위기 상담 능력, 지역사회 연계</p></div></div></div>
+                <div id="ngo-detail" class="career-detail clean-card border-t-8 border-orange-400"><div class="flex items-center gap-4 mb-6"><span class="text-4xl">🌍</span><h4 class="text-2xl font-bold">NGO 및 국제기구</h4></div><div class="grid md:grid-cols-3 gap-8"><div><h5 class="font-bold text-orange-600 mb-2 underline">주요 기관</h5><p class="text-sm text-gray-600">월드비전, 유니세프, 초록우산 어린이재단, 비영리단체</p></div><div><h5 class="font-bold text-orange-600 mb-2 underline">주요 업무</h5><p class="text-sm text-gray-600">국제구호 기획, 모금 홍보, 사회적 옹호 활동</p></div><div><h5 class="font-bold text-orange-600 mb-2 underline">핵심 역량</h5><p class="text-sm text-gray-600">글로벌 커뮤니케이션, 대외 협력 역량, 분석력</p></div></div></div>
+                <div id="csr-detail" class="career-detail clean-card border-t-8 border-indigo-400"><div class="flex items-center gap-4 mb-6"><span class="text-4xl">💼</span><h4 class="text-2xl font-bold">기업 CSR 및 ESG 전문가</h4></div><div class="grid md:grid-cols-3 gap-8"><div><h5 class="font-bold text-indigo-600 mb-2 underline">주요 기관</h5><p class="text-sm text-gray-600">대기업 사회공헌팀(삼성전자, SK 등), 복지재단</p></div><div><h5 class="font-bold text-indigo-600 mb-2 underline">주요 업무</h5><p class="text-sm text-gray-600">기업 사회공헌 기획, ESG 전략 지원, 이해관계자 협력</p></div><div><h5 class="font-bold text-indigo-600 mb-2 underline">핵심 역량</h5><p class="text-sm text-gray-600">비즈니스 마인드셋, 가치 측정, 유연한 소통</p></div></div></div>
+                <div id="research-detail" class="career-detail clean-card border-t-8 border-purple-400"><div class="flex items-center gap-4 mb-6"><span class="text-4xl">🔍</span><h4 class="text-2xl font-bold">학계 및 정책 연구</h4></div><div class="grid md:grid-cols-3 gap-8"><div><h5 class="font-bold text-purple-600 mb-2 underline">주요 기관</h5><p class="text-sm text-gray-600">한국보건사회연구원, 시·도 연구원, 대학교</p></div><div><h5 class="font-bold text-purple-600 mb-2 underline">주요 업무</h5><p class="text-sm text-gray-600">정책 지표 개발, 사회조사 분석, 학술 연구 및 교육</p></div><div><h5 class="font-bold text-purple-600 mb-2 underline">핵심 역량</h5><p class="text-sm text-gray-600">데이터 분석 기술, 논리적 글쓰기, 전문 지식</p></div></div></div>
             </div>
         </section>
 
-        <!-- 7. 학과 활동 -->
+        <!-- 7. 학과 활동 (수정됨: 신환회 MT 추가) -->
         <section id="activity" class="tab-content">
-            <div class="text-center mb-12">
-                <span class="section-tag mb-4 inline-block">STUDENT ACTIVITY</span>
-                <h3 class="text-3xl font-bold font-gaegu">함께하기에 즐거운 시간들</h3>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8">
+            <div class="text-center mb-12"><span class="section-tag mb-4 inline-block">STUDENT ACTIVITY</span><h3 class="text-3xl font-bold font-gaegu">함께하기에 즐거운 시간들</h3></div>
+            <div class="grid md:grid-cols-3 gap-6">
                 <div class="clean-card bg-yellow-50/50 flex flex-col justify-between">
-                    <div>
-                        <h4 class="text-xl font-bold mb-3 flex items-center gap-2 text-yellow-800">
-                            🌙 사복인의 밤
-                        </h4>
-                        <p class="text-gray-600 text-sm mb-6">선후배 간의 유대감을 쌓고 현직 선배님들의 조언을 들을 수 있는 우리들의 축제입니다.</p>
-                    </div>
-                    <button onclick="openModal('nightModal')" class="w-full py-3 bg-yellow-400 hover:bg-yellow-500 text-white font-bold rounded-xl transition-colors flex items-center justify-center gap-2 shadow-sm">
-                        <span>📸</span> 사진 보기
-                    </button>
+                    <div><h4 class="text-xl font-bold mb-3 text-yellow-800">🎉 신환회 MT</h4><p class="text-gray-600 text-sm mb-6">새로운 인연의 시작! 동기, 선후배와 함께 즐거운 추억을 쌓는 학과 생활의 꽃입니다.</p></div>
+                    <button onclick="openModal('mtModal')" class="w-full py-3 bg-yellow-400 hover:bg-yellow-500 text-white font-bold rounded-xl transition-colors shadow-sm">📸 사진 보기</button>
                 </div>
                 <div class="clean-card bg-yellow-50/50 flex flex-col justify-between">
-                    <div>
-                        <h4 class="text-xl font-bold mb-3 flex items-center gap-2 text-yellow-800">
-                            📊 학술제
-                        </h4>
-                        <p class="text-gray-600 text-sm mb-6">한 학기 동안 연구한 사회복지 이슈를 발표하며 전문적인 실천 역량을 뽐내는 자리입니다.</p>
-                    </div>
-                    <button onclick="openModal('festivalModal')" class="w-full py-3 bg-yellow-400 hover:bg-yellow-500 text-white font-bold rounded-xl transition-colors flex items-center justify-center gap-2 shadow-sm">
-                        <span>📸</span> 사진 보기
-                    </button>
+                    <div><h4 class="text-xl font-bold mb-3 text-yellow-800">🌙 사복인의 밤</h4><p class="text-gray-600 text-sm mb-6">선후배 간의 유대감을 쌓고 현직 선배님들의 조언을 들을 수 있는 우리들의 축제입니다.</p></div>
+                    <button onclick="openModal('nightModal')" class="w-full py-3 bg-yellow-400 hover:bg-yellow-500 text-white font-bold rounded-xl transition-colors shadow-sm">📸 사진 보기</button>
+                </div>
+                <div class="clean-card bg-yellow-50/50 flex flex-col justify-between">
+                    <div><h4 class="text-xl font-bold mb-3 text-yellow-800">📊 학술제</h4><p class="text-gray-600 text-sm mb-6">한 학기 동안 연구한 사회복지 이슈를 발표하며 전문적인 실천 역량을 뽐내는 자리입니다.</p></div>
+                    <button onclick="openModal('festivalModal')" class="w-full py-3 bg-yellow-400 hover:bg-yellow-500 text-white font-bold rounded-xl transition-colors shadow-sm">📸 사진 보기</button>
                 </div>
             </div>
         </section>
 
         <!-- 8. 추천 대상 -->
         <section id="recommend" class="tab-content">
-            <div class="text-center mb-12">
-                <span class="section-tag mb-4 inline-block">RECOMMENDED</span>
-                <h3 class="text-3xl font-bold font-gaegu">당신이 찾던 그곳일지 몰라요</h3>
-            </div>
+            <div class="text-center mb-12"><span class="section-tag mb-4 inline-block">RECOMMENDED</span><h3 class="text-3xl font-bold font-gaegu">당신이 찾던 그곳일지 몰라요</h3></div>
             <div class="grid gap-4 max-w-2xl mx-auto">
-                <div class="p-6 bg-white border-2 border-yellow-400 rounded-2xl flex items-center gap-4">
-                    <div class="text-2xl">✨</div>
-                    <p class="font-bold">사람의 숨겨진 강점을 찾아내는 것을 좋아하는 사람</p>
-                </div>
-                <div class="p-6 bg-white border-2 border-yellow-200 rounded-2xl flex items-center gap-4">
-                    <div class="text-2xl">🧩</div>
-                    <p class="font-bold">심리, 사회, 법 등 다양한 학문을 배우고 싶은 사람</p>
-                </div>
-                <div class="p-6 bg-white border-2 border-yellow-100 rounded-2xl flex items-center gap-4">
-                    <div class="text-2xl">👂</div>
-                    <p class="font-bold">다른 이의 이야기에 진심으로 귀 기울일 줄 아는 사람</p>
-                </div>
+                <div class="p-6 bg-white border-2 border-yellow-400 rounded-2xl flex items-center gap-4"><div class="text-2xl">✨</div><p class="font-bold">사람의 숨겨진 강점을 찾아내는 것을 좋아하는 사람</p></div>
+                <div class="p-6 bg-white border-2 border-yellow-200 rounded-2xl flex items-center gap-4"><div class="text-2xl">🧩</div><p class="font-bold">심리, 사회, 법 등 다양한 학문을 배우고 싶은 사람</p></div>
+                <div class="p-6 bg-white border-2 border-yellow-100 rounded-2xl flex items-center gap-4"><div class="text-2xl">👂</div><p class="font-bold">다른 이의 이야기에 진심으로 귀 기울일 줄 아는 사람</p></div>
             </div>
         </section>
 
         <!-- 9. 자격증 -->
         <section id="cert" class="tab-content">
-            <div class="text-center mb-12">
-                <span class="section-tag mb-4 inline-block">CERTIFICATE</span>
-                <h3 class="text-3xl font-bold font-gaegu">취업을 위한 전문성 확보</h3>
-            </div>
+            <div class="text-center mb-12"><span class="section-tag mb-4 inline-block">CERTIFICATE</span><h3 class="text-3xl font-bold font-gaegu">취업을 위한 전문성 확보</h3></div>
             <div class="max-w-2xl mx-auto clean-card text-center">
-                <div class="mb-10">
-                    <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Graduation Gift</p>
-                    <p class="text-4xl font-bold">사회복지사 <span class="text-yellow-500">2급</span></p>
-                    <p class="text-gray-500 mt-3">별도의 시험 없이 졸업과 동시에 취득 가능!</p>
-                </div>
+                <div class="mb-10"><p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Graduation Gift</p><p class="text-4xl font-bold">사회복지사 <span class="text-yellow-500">2급</span></p><p class="text-gray-500 mt-3">별도의 시험 없이 졸업과 동시에 취득 가능!</p></div>
                 <div class="h-px w-20 bg-gray-200 mx-auto mb-10"></div>
-                <div>
-                    <p class="text-2xl font-bold mb-2">사회복지사 1급 도전</p>
-                    <p class="text-gray-500 text-sm">전문가로서의 자질을 인증받는 국가전문자격 응시 자격 부여</p>
-                </div>
+                <div><p class="text-2xl font-bold mb-2">사회복지사 1급 도전</p><p class="text-gray-500 text-sm">전문가로서의 자질을 인증받는 국가전문자격 응시 자격 부여</p></div>
             </div>
         </section>
-
     </main>
 
     <footer class="bg-gray-50 py-16 text-center">
@@ -717,6 +450,5 @@
         <p class="text-gray-400 text-sm">부산대학교 사회복지학과 부스에 방문해주셔서 감사합니다.</p>
         <p class="text-xs text-gray-300 mt-10 tracking-widest uppercase">PERSONS IN SOLIDARITY</p>
     </footer>
-
 </body>
 </html>
